@@ -6,9 +6,11 @@ import Link from 'next/link';
 import styles from '@/app/ui/home.module.css';
 import { lusitana } from '@/app/ui/fonts';
 import Image from 'next/image';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { checkTokenCookie } from './auth/login/auth';
+import { Button, buttonVariants } from './components/button';
+import { Input, inputVariants } from './components/input';
 
 export default function Page() {
   const router = useRouter();
@@ -20,6 +22,9 @@ export default function Page() {
       router.push('/dashboard'); // Ganti dengan path dashboard yang sesuai
     }
   }, []);
+
+
+  const ref = useRef<null | HTMLButtonElement>(null)
 
   return (
     <main className="flex min-h-screen flex-col p-6">
@@ -39,6 +44,11 @@ export default function Page() {
             </a>
             , brought to you by Vercel.
           </p>
+          <Input variant={'destructive'} />
+        <Button ref={ref} size='sm' variant='default'>
+          aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        </Button>
+
           <Link
             href="./auth/login"
             className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"

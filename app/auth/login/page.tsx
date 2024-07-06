@@ -34,23 +34,25 @@ const Login: React.FC = () => {
   }, []);
 
   const handleLogin = async () => {
-      try {
-          const { data } = await axios.post('http://localhost:8000/api/login', {
-              email,
-              password,
-          });
+    try {
+        const { data } = await axios.post('http://localhost:8000/api/login', {
+            email,
+            password,
+        });
 
-          if (data.token) {
-              setTokenCookie(data.token);
-              router.push('/dashboard');
-          } else {
-              setError('Invalid login credentials');
-          }
-      } catch (error) {
-          setError('Failed to login. Please try again.');
-          console.error('Login error:', error);
-      }
-  };
+        if (data.token) {
+            setTokenCookie(data.token);
+            router.push('/dashboard');
+        } else {
+            setError('Invalid login credentials');
+        }
+    } catch (error) {
+        setError('Failed to login. Please try again.');
+        console.error('Login error:', error);
+    }
+};
+
+
 
   const handleRegisterRedirect = () => {
       router.push('/register');
